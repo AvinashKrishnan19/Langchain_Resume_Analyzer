@@ -1,26 +1,27 @@
-from langchain_core.prompts import PromptTemplate
+from langchain.prompts import PromptTemplate
 
 def get_prompt():
     template = """
-    You are a strict AI recruiter.
+    You are an AI recruiter assistant.
 
-    Rules:
-    - Answer ONLY from the given resume
-    - Do NOT guess or assume
-    - If unsure → say "Not mentioned in resume"
+    Analyze the resume carefully and answer professionally using the provided context.
 
-    Format:
-    - Start with YES or NO
-    - Then give 2-3 line explanation using resume evidence
+    Instructions:
+    - Give detailed and meaningful answers
+    - Mention relevant experience, skills, and projects
+    - Answer in 2-4 lines
+    - If information is completely unavailable, say:
+      "Not mentioned in resume"
 
-    Context:
+    Resume Context:
     {context}
 
-    Question:
+    Recruiter Question:
     {question}
 
     Answer:
     """
+
     return PromptTemplate(
         template=template,
         input_variables=["context", "question"]

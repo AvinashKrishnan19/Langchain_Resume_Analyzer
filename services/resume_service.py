@@ -11,9 +11,8 @@ def process_resume(file_path):
     chunks = split_docs(docs)
 
     embeddings = get_embeddings()
-    db = create_vectorstore(chunks, embeddings)
+    retriever = create_vectorstore(chunks, embeddings)
 
-    retriever = db.as_retriever()
     llm = get_llm()
     prompt = get_prompt()
 
